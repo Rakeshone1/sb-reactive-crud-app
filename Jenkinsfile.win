@@ -1,0 +1,46 @@
+pipeline {
+    
+    agent {
+        docker {
+            // Use a Docker image that has JDK 21 and Maven installed
+            // You can use an official maven image with OpenJDK 21
+            image 'maven:3.9.6-eclipse-temurin-21'
+            args '-v /root/.m2:/root/.m2'  // cache maven dependencies
+        }
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                echo 'Cloning repository...'
+                git branch: 'main', url: 'https://github.com/Rakeshone1/sb-reactive-crud-app.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo 'Building with Maven...'
+                sh 'mvn clean install'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Running tests...'
+                sh 'mvn test'
+            }
+            post {
+                always {
+                    junit '**/target/surefire-reports/*.xml'
+                }
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying to a server...'
+                echo 'Deployment successful!'
+            }
+        }
+    }
+}
