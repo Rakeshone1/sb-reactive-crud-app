@@ -1,0 +1,13 @@
+spring:
+  r2dbc:
+    url: r2dbc:mysql://localhost:3306/practice  # The database URL for MySQL
+    username: root  # Database username
+    password: rps@12345  # Database password
+    pool:
+      initial-size: 10
+      max-size: 50
+      max-idle-time: 30m
+      validation-query: SELECT 1
+
+  main:
+    web-application-type: reactive  # Set the application type to reactive (WebFlux)
