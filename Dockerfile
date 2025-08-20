@@ -3,7 +3,7 @@
 # ---------------------------------------------
 # Stage 1 - Build the application using Maven
 # ---------------------------------------------
-FROM maven:3.8.4-jdk-21 AS builder
+FROM maven:3.8.4-openjdk-21 AS builder
 
 # Set the working directory
 WORKDIR /app
