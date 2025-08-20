@@ -1,7 +1,7 @@
 # ---------------------------------------------
 # Stage 1 - Build the application using Maven
 # ---------------------------------------------
-FROM maven:3.8.4-temurin-21 AS builder
+FROM maven:3.9.6-eclipse-temurin-21 AS builder
 
 WORKDIR /app
 
