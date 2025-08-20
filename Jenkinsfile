@@ -11,7 +11,7 @@ pipeline {
         SONARQUBE_SERVER      = 'SonarCloud'
         SONAR_PROJECT_KEY     = 'Rakeshone1_sb-reactive-crud-app'
         SONAR_PROJECT_NAME    = 'sb-reactive-crud-api'
-        SONAR_ORGANIZATION    = 'Rakeshone1'
+        SONAR_ORGANIZATION    = 'rakeshone1'  // Updated organization key
 
         // Docker configuration
         APP_NAME              = 'sb-reactive-crud-app'
