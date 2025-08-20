@@ -1,6 +1,7 @@
 # Multistage Dockerfile for building Java Spring Boot REST API application
+
 # Stage 1 - Build the application using Maven
-FROM maven:3.8.4-eclipse-temurin-21 AS builder
+FROM maven:3.8.4-openjdk-21 AS builder
 
 # Set the working directory
 WORKDIR /app
@@ -9,8 +10,6 @@ WORKDIR /app
 COPY pom.xml .
 
 # Download maven dependencies and cache them
-# This goal tells Maven to download all project dependencies, plugins, and reports without building the project.
-# -B flag is for batch mode, which is useful in CI/CD environments.
 RUN mvn dependency:go-offline -B
 
 # Copy the source code
@@ -20,8 +19,6 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Stage 2 - Create the final image with the built application
-# Alpine version of the JRE is used for a smaller image size
-# Use a minimal JRE image to run the application
 FROM eclipse-temurin:21-jre-alpine
 
 # Run as a non-root user for security
