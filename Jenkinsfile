@@ -9,7 +9,7 @@ pipeline {
     environment {
         // SonarQube configuration
         SONARQUBE_SERVER      = 'SonarCloud'
-        SONAR_PROJECT_KEY     = 'rakeshone1_sb-reactive-crud-app'
+        SONAR_PROJECT_KEY     = 'Rakeshone1_sb-reactive-crud-app'
         SONAR_PROJECT_NAME    = 'sb-reactive-crud-api'
         SONAR_ORGANIZATION    = 'Rakeshone1'
 
